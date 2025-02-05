@@ -19,13 +19,13 @@ export class AlertifyService {
 }
 
 export class AlertifyOptions {
-  alertifyType: AlertifyMethod = AlertifyMethod.message;
+  alertifyType: AlertifyMessageType = AlertifyMessageType.message;
   alertifyposition: AlertifyPosition = AlertifyPosition.topright;
   delay: number = 3;
   dismissOthers: boolean = false;
 }
 
-export enum AlertifyMethod {
+export enum AlertifyMessageType {
   error = "error",
   message = "message",
   notify = "notify",

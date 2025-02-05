@@ -10,13 +10,13 @@ import {  AlertifyMessageType, AlertifyPosition, AlertifyService } from '../../s
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent  {
 
-  constructor(private alertify2: AlertifyService) {
-  }
-  ngOnInit(): void {
-    this.alertify2.message
-    ("selam",{alertifyposition: AlertifyPosition.topleft,alertifyType: AlertifyMessageType.success});
-  }
+  // constructor(private alertify2: AlertifyService) {
+  // }
+  // ngOnInit(): void {
+  //   this.alertify2.message
+  //   ("selam",{alertifyposition: AlertifyPosition.topleft,alertifyType: AlertifyMessageType.success});
+  // }
 
 }

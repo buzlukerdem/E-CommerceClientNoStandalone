@@ -2,7 +2,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-color:gold;">
                 <a class="navbar-brand" routerLink="">E-Ticaret</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -28,7 +28,7 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -46,6 +46,13 @@
 </div>
 
 <br>
-
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#FFD700" name="sjelly" type="square-jelly-box">
+    <p style="font-size: 20px; color: white">Yükleniyor...</p>
+</ngx-spinner>
+<ngx-spinner name="sloader" type="square-loader"></ngx-spinner>
+<ngx-spinner name="spacman" type="pacman"></ngx-spinner>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#000000" name="scog" type="cog">
+    <p style="font-size: 20px; color: white">Yükleniyor...</p>
+</ngx-spinner>
 
 <!-- <app-layout></app-layout> -->

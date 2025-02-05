@@ -10,12 +10,18 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from './servic
 })
 export class AppComponent {
   title = 'E-CommerceNoStandalone';
-  constructor(private customToastrService: CustomToastrService) {
-    customToastrService.message("Kayıt Başarılı", "SUCCESS", ToastrMessageType.success,{
-      messageType: ToastrMessageType.success,
-      position: ToastrPosition.TopCenter
-    })
+
+  constructor() {
+    
   }
+  
+  
+  // constructor(private customToastrService: CustomToastrService) {
+  //   customToastrService.message("Kayıt Başarılı", "SUCCESS", ToastrMessageType.success,{
+  //     messageType: ToastrMessageType.success,
+  //     position: ToastrPosition.TopCenter
+  //   })
+  // }
 }
 
 

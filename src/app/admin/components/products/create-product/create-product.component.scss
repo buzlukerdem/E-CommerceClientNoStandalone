@@ -1,0 +1,17 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+}
+
+.create-input{
+    margin: 10px 10px 10px;
+    
+}
+
+.create-button{
+    color: white;
+    margin: 10px 10px 10px;
+    border: solid 2px white;
+}

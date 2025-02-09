@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent, SpinnerType } from '../../../base/base.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClientService } from '../../../services/common/http-client.service';
-import { Product } from '../../../contracts/product';
 
 @Component({
   selector: 'app-products',
@@ -69,8 +68,8 @@ export class ProductsComponent extends BaseComponent implements OnInit {
     //   controller: "products"
     // }, "0194e7b6-1bb1-7b73-92b9-2163655bbe69").subscribe();
 
-    this.httpClientService.get<Product[]>({
-      controller: "products"
-    }).subscribe(data => console.log(data));
+    // this.httpClientService.get<Product[]>({
+    //   controller: "products"
+    // }).subscribe(data => console.log(data));
   }
 }

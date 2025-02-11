@@ -16,37 +16,37 @@ export class HttpClientService {
     if (requestParameters.fullEndPoint)
       url = requestParameters.fullEndPoint;
     else
-      url = `${this.getUrl(requestParameters)}${id ? `/${id}` : ""}`
+      url = `${this.getUrl(requestParameters)}${id ? `/${id}` : ""}${requestParameters.queryString ? `?${requestParameters.queryString}` : ""}`
 
     return this.httpClient.get<T>(url, { headers: requestParameters.headers })
   }
 
-  post<T>(requestParameters: Partial<RequestParameters>, body: Partial<T>) : Observable<T> {
+  post<T>(requestParameters: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
     let url: string = "";
     if (requestParameters.fullEndPoint)
       url = requestParameters.fullEndPoint;
     else
-      url = `${this.getUrl(requestParameters)}`
-    return this.httpClient.post<T>(url,body,{headers: requestParameters.headers});
+      url = `${this.getUrl(requestParameters)}${requestParameters.queryString ? `?${requestParameters.queryString}` : ""}`
+    return this.httpClient.post<T>(url, body, { headers: requestParameters.headers });
   }
 
-  put<T>(requestParameters: Partial<RequestParameters>, body: Partial<T>) : Observable<T> {
+  put<T>(requestParameters: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
     // id body den alınacak
     let url: string = "";
     if (requestParameters.fullEndPoint)
       url = requestParameters.fullEndPoint;
     else
-      url = `${this.getUrl(requestParameters)}`
-      return this.httpClient.put<T>(url,body,{headers: requestParameters.headers});
+      url = `${this.getUrl(requestParameters)}${requestParameters.queryString ? `?${requestParameters.queryString}` : ""}`
+    return this.httpClient.put<T>(url, body, { headers: requestParameters.headers });
   }
-  
-  delete<T>(requestParameters: Partial<RequestParameters>, id:string): Observable<T> {
+
+  delete<T>(requestParameters: Partial<RequestParameters>, id: string): Observable<T> {
     let url: string = "";
     if (requestParameters.fullEndPoint)
       url = requestParameters.fullEndPoint;
     else
-      url = `${this.getUrl(requestParameters)}/${id}`;
-    return this.httpClient.delete<T>(url, {headers: requestParameters.headers});
+      url = `${this.getUrl(requestParameters)}/${id}${requestParameters.queryString ? `?${requestParameters.queryString}` : ""}`;
+    return this.httpClient.delete<T>(url, { headers: requestParameters.headers });
   }
 
 }
@@ -57,6 +57,7 @@ export class RequestParameters {
   action?: string;
   //headers
   headers?: HttpHeaders;
+  queryString?: string;
   baseUrl?: string;
   fullEndPoint?: string;
 }

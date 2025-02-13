@@ -19,7 +19,7 @@ export class ListProductComponent extends BaseComponent implements OnInit {
     super(spinner)
   }
 
-  displayedColumns: string[] = ['id', 'name', 'price', 'stock', 'createdDate', 'updatedDate'];
+  displayedColumns: string[] = ['id', 'name', 'price', 'stock', 'createdDate', 'updatedDate','delete'];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   dataSource: MatTableDataSource<List_Product> = null;
 
@@ -29,7 +29,7 @@ export class ListProductComponent extends BaseComponent implements OnInit {
 
 
   async getProducts() {
-    const allProducts: { totalCount: number, products: List_Product[] } = await this.productService.list(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 10, () => errorMessage => {
+    const allProducts: { totalCount: number, products: List_Product[] } = await this.productService.list(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 15, () => errorMessage => {
       this.alertifyService.message(errorMessage, {
         dismissOthers: true,
         alertifyposition: AlertifyPosition.topright,

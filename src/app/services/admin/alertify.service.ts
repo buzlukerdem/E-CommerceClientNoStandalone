@@ -21,7 +21,7 @@ export class AlertifyService {
 export class AlertifyOptions {
   alertifyType: AlertifyMessageType = AlertifyMessageType.message;
   alertifyposition: AlertifyPosition = AlertifyPosition.topright;
-  delay: number = 3;
+  delay: number = 2;
   dismissOthers: boolean = false;
 }
 

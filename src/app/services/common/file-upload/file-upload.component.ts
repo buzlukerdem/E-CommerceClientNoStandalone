@@ -32,41 +32,34 @@ export class FileUploadComponent {
 
     this.httpClientService.post({
       controller: this.options.controller,
-      action: this.options.accept,
+      action: this.options.action,
       queryString: this.options.queryString,
       headers: new HttpHeaders({ "responseType": "blob" })
-    }, fileData).subscribe({
-      next(data) {
-        if(this.options.isAdminPage){
-          this.alertifyService.message("Dosya yükleme işlemi gerçekleşmiştir.", {
-            alertifyposition: AlertifyPosition.topcenter,
-            dismissOthers: true,
-            alertifyType: AlertifyMessageType.success
-          })
-        } else {
-          this.toastrService.message("Dosya yüklemeniz başarılı", "Dosya Yükleme", {
-            messageType: ToastrMessageType.success,
-            position: ToastrPosition.TopCenter
-          })
-        }
-      },
-      error(err){
-        if (this.options.isAdminPage) {
-          this.alertifyService.message("Dosya yükleme işlemi başarısız.", {
-            alertifyposition: AlertifyPosition.topcenter,
-            dismissOthers: true,
-            alertifyType: AlertifyMessageType.error
-          })
-        } else {
-          this.toastrService.message("Dosya yüklemeniz başarısız olmuştur", "Dosya Yükleme", {
-            messageType: ToastrMessageType.error,
-            position: ToastrPosition.TopCenter
-          })
-        }
+    }, fileData).subscribe(data => {
+      if (this.options.isAdminPage) {
+        this.alertifyService.message("Dosya yükleme başarılı", {
+          alertifyposition: AlertifyPosition.topcenter,
+          alertifyType: AlertifyMessageType.success
+        })
+      } else {
+        this.toastrService.message("Düsya yükleme başarılı", "Success", {
+          messageType: ToastrMessageType.success,
+          position: ToastrPosition.TopCenter
+        })
+      }
+    }, (errorResponse: HttpErrorResponse) => {
+      if (this.options.isAdminPage) {
+        this.alertifyService.message("Dosya yükleme hatalı", {
+          alertifyposition: AlertifyPosition.topcenter,
+          alertifyType: AlertifyMessageType.error
+        })
+      } else {
+        this.toastrService.message("Düsya yükleme hatalı", "Error", {
+          messageType: ToastrMessageType.error,
+          position: ToastrPosition.TopCenter
+        })
       }
     })
-
-
 
   }
 }

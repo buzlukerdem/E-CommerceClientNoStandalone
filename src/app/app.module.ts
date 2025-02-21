@@ -12,7 +12,6 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { DialogModule } from '@angular/cdk/dialog';
 import { FileUploadModule } from './services/common/file-upload/file-upload.module';
-import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upload-dialog.component';
 
 
 
@@ -21,18 +20,18 @@ import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upl
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploadDialogComponent,
+   
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    NgxSpinnerModule,
     AppRoutingModule,
     AdminModule,
+    UiModule,
+    ToastrModule.forRoot(),
+    NgxSpinnerModule,
     FileUploadModule,
     DialogModule,
-    UiModule,
     HttpClientModule
   ],
   providers: [

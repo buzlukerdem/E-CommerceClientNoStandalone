@@ -15,12 +15,9 @@ import { FileUploadModule } from './services/common/file-upload/file-upload.modu
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
-   
   ],
   imports: [
     BrowserModule,

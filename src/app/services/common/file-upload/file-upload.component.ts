@@ -7,7 +7,6 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui
 import { MatDialog } from '@angular/material/dialog';
 import { FileUploadDialogComponent, FileUploadDialogState } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
 import { DialogService } from '../dialog.service';
-import { DeleteState } from '../../../dialogs/delete-dialog/delete-dialog.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerType } from '../../../base/base.component';
 

@@ -6,6 +6,8 @@ import { ProductService } from '../../../../services/common/models/product.servi
 import { BaseComponent, SpinnerType } from '../../../../base/base.component';
 import { AlertifyMessageType, AlertifyPosition, AlertifyService } from '../../../../services/admin/alertify.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DialogService } from '../../../../services/common/dialog.service';
+import { SelectProductImageDialogComponent } from '../../../../dialogs/select-product-image-dialog/select-product-image-dialog.component';
 
 @Component({
   selector: 'app-list-product',
@@ -15,7 +17,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrl: './list-product.component.scss'
 })
 export class ListProductComponent extends BaseComponent implements OnInit {
-  constructor(private productService: ProductService, private alertifyService: AlertifyService, spinner: NgxSpinnerService) {
+  constructor(
+    private productService: ProductService,
+    private alertifyService: AlertifyService,
+    spinner: NgxSpinnerService,
+    private dialogService: DialogService) {
     super(spinner)
   }
 
@@ -39,6 +45,16 @@ export class ListProductComponent extends BaseComponent implements OnInit {
     this.dataSource = new MatTableDataSource<List_Product>(allProducts.products);
     this.paginator.length = allProducts.totalCount;
     // this.dataSource.paginator = this.paginator;
+  }
+
+  addProductImages(id: string) {
+    this.dialogService.openDialog({
+      componentType: SelectProductImageDialogComponent,
+      data: id,
+      options: {
+        width: "1400px"
+      }
+    })
   }
 
   pageChanged() {

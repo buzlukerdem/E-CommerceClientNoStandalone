@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { FileUploadDialogComponent, FileUploadDialogState } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
 import { DialogService } from '../dialog.service';
 import { DeleteState } from '../../../dialogs/delete-dialog/delete-dialog.component';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from '../../../base/base.component';
 
 @Component({
   selector: 'app-file-upload',
@@ -23,7 +25,8 @@ export class FileUploadComponent {
     private alertifyService: AlertifyService,
     private toastrService: CustomToastrService,
     private dialog: MatDialog,
-    private dialogService: DialogService) {
+    private dialogService: DialogService,
+    private spinner: NgxSpinnerService) {
   }
 
   public files: NgxFileDropEntry[];
@@ -42,12 +45,18 @@ export class FileUploadComponent {
       componentType: FileUploadDialogComponent,
       data: FileUploadDialogState.Yes,
       afterClosed: () => {
+
+        this.spinner.show(SpinnerType.SquareLoader)
+        
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
           queryString: this.options.queryString,
           headers: new HttpHeaders({ "responseType": "blob" })
         }, fileData).subscribe(data => {
+
+          this.spinner.hide(SpinnerType.SquareLoader);
+
           if (this.options.isAdminPage) {
             this.alertifyService.message("Dosya yükleme başarılı", {
               alertifyposition: AlertifyPosition.topcenter,
@@ -61,6 +70,9 @@ export class FileUploadComponent {
           }
         }, (errorResponse: HttpErrorResponse) => {
           if (this.options.isAdminPage) {
+
+            this.spinner.hide(SpinnerType.SquareLoader);
+
             this.alertifyService.message("Dosya yükleme hatalı", {
               alertifyposition: AlertifyPosition.topcenter,
               alertifyType: AlertifyMessageType.error

@@ -16,18 +16,24 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
   ) {
     super(dialogRef)
-
+    console.log(this.data);
+    
   }
 
   @Output() options: Partial<FileUploadOptions> = {
     accept: ".png, .jpg, .jpeg,",
     controller: "products",
     action: "upload",
+    queryString: `id=${this.data}`,
+    // queryString: "7a809bcb-3eaf-49a5-bdd9-4b0c6afe4453",
     isAdminPage: true,
     explanation: "Choose Product Images",
     // queryString: "",
-    queryString: `id=${this.data}`
+    
+    
   };
+
+  
 }
 
 export enum SelectProductImageState {

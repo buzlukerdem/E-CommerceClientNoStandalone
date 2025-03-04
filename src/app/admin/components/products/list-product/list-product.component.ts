@@ -25,7 +25,7 @@ export class ListProductComponent extends BaseComponent implements OnInit {
     super(spinner)
   }
 
-  displayedColumns: string[] = ['id', 'name', 'price', 'stock', 'createdDate', 'updatedDate', 'photos', 'update', 'delete'];
+  displayedColumns: string[] = ['name', 'price', 'stock', 'createdDate', 'updatedDate', 'photos', 'update', 'delete'];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   dataSource: MatTableDataSource<List_Product> = null;
 

@@ -46,13 +46,14 @@ export class FileUploadComponent {
       afterClosed: () => {
 
         this.spinner.show(SpinnerType.SquareLoader)
-        
+
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
           queryString: this.options.queryString,
           headers: new HttpHeaders({ "responseType": "blob" })
         }, fileData).subscribe(data => {
+          console.log();
 
           this.spinner.hide(SpinnerType.SquareLoader);
 
@@ -68,6 +69,8 @@ export class FileUploadComponent {
             })
           }
         }, (errorResponse: HttpErrorResponse) => {
+          console.log("error", errorResponse);
+
           if (this.options.isAdminPage) {
 
             this.spinner.hide(SpinnerType.SquareLoader);
